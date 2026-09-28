@@ -21,17 +21,14 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-          cache: 'maven' # Change to 'gradle' if using Gradle
+          cache: 'maven'
+          cache-dependency-path: delacruzex15/pom.xml
 
       # Step 3: Verify Java installation
       - name: Check Java version
         run: java -version
 
-      # Step 4: Build the project
-      # Option A: Maven (use 'mvnw.cmd' if using the Maven Wrapper)
+      # Step 4: Build the project (pom.xml is inside the delacruzex15 folder)
       - name: Build with Maven
+        working-directory: delacruzex15
         run: mvn --batch-mode clean package
-
-      # Option B: Gradle (uncomment if using Gradle)
-      # - name: Build with Gradle
-      #   run: .\gradlew.bat build
